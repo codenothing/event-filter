@@ -1,0 +1,9 @@
+###
+### Data Selector [VERSION] Change Log
+### [DATE]
+### Corey Hart @ http://www.codenothing.com
+###
+
+# New Features
+-Now Passing JSLINT
+-Full cross browser testing
