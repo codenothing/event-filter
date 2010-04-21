@@ -4,8 +4,9 @@
  * Corey Hart @ http://www.codenothing.com
  */ 
 (function( $, undefined ) {
+
 	// Initialize vars together
-	var original, parts, notOperator = false, name, namespace, events, firstChar;
+	var original, parts, notOperator = false, name, namespace, firstChar;
 
 	// Event filter needs to be capitalized so it doesn't clash with 'even' filter
 	$.expr[':'].Event = function( elem, index, params, group ) {
@@ -33,20 +34,22 @@
 		}
 
 		// Loop variables
-		var i, k;
+		var i, k, n, events;
 
 		// Ensure events exist on element
 		if ( ! ( events = $.data( elem, 'events' ) ) ) {
 			return notOperator;
 		}
+
 		// Run check for when only the namespace is passed
 		// (Slower, especially when lots of events are attached)
-		else if ( ! name && namespace.length ) {
+		if ( ! name && namespace.length ) {
 			for ( i in events ) {
-				if ( events.hasOwnPrototype(i) ) {
+				if ( events.hasOwnProperty(i) ) {
 					for ( k in events[i] ) {
-						if ( events[i].hasOwnPrototype(k) && events[i][k].type && events[i][k].type === namespace ) {
-							return !notOperator;
+						if ( events[i].hasOwnProperty(k) && ( n = events[i][k].namespace ) &&
+							( n === namespace || ( n.indexOf('.') > -1 && $.inArray( namespace, n.split('.') ) > -1 ) ) ) {
+								return !notOperator;
 						}
 					}
 				}
@@ -63,8 +66,9 @@
 		else if ( namespace.length ) {
 			// Search for namespaced event
 			for ( i in events[name] ) {
-				if ( events[ name ].hasOwnPrototype(i) && events[ name ][ i ].type && events[ name ][ i ].type == namespace ) {
-					return ! notOperator;
+				if ( events[ name ].hasOwnProperty(i) && ( n = events[ name ][ i ].namespace ) && 
+					( n === namespace || ( n.indexOf('.') > -1 && $.inArray( namespace, n.split('.') ) > -1 ) ) ) {
+						return ! notOperator;
 				}
 			}
 			// Event not found

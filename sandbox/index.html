@@ -2,11 +2,10 @@
 <html>
 <head>
 	<title>Event Filter [VERSION] Test Suite</title>
-	<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>
 	<script type='text/javascript' src='../jquery/jquery-1.4.2.js'></script>
 	<script type='text/javascript' src='../src/jquery.event-filter.js'></script>
-	<script type='text/javascript' src='array.js'></script>
-	<script type='text/javascript' src='test.js'></script>
+	<script type='text/javascript' src='Sandbox.js'></script>
+	<script type='text/javascript' src='Enviorment.js'></script>
 <style type='text/css'>
 body {
 	font-size: 10pt;
@@ -16,14 +15,8 @@ li {
 	padding: 2px 0;
 }
 
-div.test-div {
+#enviorment {
 	display: none;
-}
-
-.focus {
-	color: red;
-	font-weight: bold;
-	font-size: 12pt;
 }
 
 #results tr td {
@@ -44,27 +37,30 @@ Corey Hart http://www.codenothing.com
 <h1>Event Filter [VERSION] Test Suite</h1>
 
 <!-- Not important to show, just needed for testing -->
-<div class='test-div'>Test Div 0</div>
-<div class='test-div'>Test Div 1</div>
-<div class='test-div'>Test Div 2</div>
-<div class='test-div'>Test Div 3</div>
-<div class='test-div'>Test Div 4</div>
-<div class='test-div'>Test Div 5</div>
-<div class='test-div'>Test Div 6</div>
-<div class='test-div'>Test Div 7</div>
-<div class='test-div'>Test Div 8</div>
+<div id='enviorment'>
+	<div>Enviorment Div 0</div>
+	<div>Enviorment Div 1</div>
+	<div>Enviorment Div 2</div>
+	<div>Enviorment Div 3</div>
+	<div>Enviorment Div 4</div>
+	<div>Enviorment Div 5</div>
+	<div>Enviorment Div 6</div>
+	<div>Enviorment Div 7</div>
+	<div>Enviorment Div 8</div>
+</div>
 
 <table id='results' bgcolor='#989898' cellspacing='2' cellpadding='3'>
 <tr bgcolor='#d9d9d9'>
-	<th>Testing</th>
-	<th>Should Match</th>
-	<th>Matched</th>
+	<th></th>
+	<th>Filter</th>
+	<th>Expected Match</th>
+	<th>Actual Match</th>
 	<th>Result</th>
 </tr>
 </table>
 
 <p>
-<a href='../demo/'>Back to index.html</a>
+<a href='../demo/'>Back to Demo</a>
 </p>
 </body>
 </html>

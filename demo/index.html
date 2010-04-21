@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<title>jQuery Event Filter [VERSION]</title>
-		<script type='text/javascript' src='jquery-1.4.2.js'></script>
-		<script type='text/javascript' src='jquery.event-filter.js'></script>
+		<script type='text/javascript' src='../jquery/jquery-1.4.2.js'></script>
+		<script type='text/javascript' src='../src/jquery.event-filter.js'></script>
 		<script type='text/javascript'>
 			jQuery(function($){
 				// Create events with empty functions attached for demo
-				$('li:even').click(function(){});
-				$('li:odd').focus(function(){});
-				$('li:eq(2)').bind('myevent', function(){});
-				$('li:eq(3)').bind('myevent.namespace1', function(){});
-				$('li:eq(4)').bind('myevent.namespace1', function(){});
-				$('li:eq(5)').bind('myevent.namespace2', function(){});
-				$('li:eq(8)').bind('myevent2', function(){});
+				$('li:even').click( $.noop );
+				$('li:odd').focus( $.noop );
+				$('li:eq(2)').bind( 'myevent',  $.noop );
+				$('li:eq(3)').bind( 'myevent.namespace1',  $.noop );
+				$('li:eq(4)').bind( 'myevent.namespace1',  $.noop );
+				$('li:eq(5)').bind( 'myevent.namespace2',  $.noop );
+				$('li:eq(8)').bind( 'myevent2',  $.noop );
 
 				// List of events used
 				var events = "click focus mouseover blur myevent myevent.namespace1 myevent.namespace2 myevent2".split(' ');
