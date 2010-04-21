@@ -14,6 +14,12 @@ Bowser Support
 **Chrome** 5.0  
 
 
+Live Events
+-----------
+This plugin does not support live event filtering. This includes events attached using the delegate method. These events
+are attached to elements higher up the DOM tree above the target elements, essentially leaving the target elements eventless.
+
+
 Credits
 --------
 [Corey Hart](http://www.codenothing.com) - Creator
