@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>jQuery Event Filter</title>
+		<script type='text/javascript' src='jquery-1.3.2.js'></script>
+		<script type='text/javascript' src='jquery.event-filter.js'></script>
+		<script type='text/javascript'>
+			jQuery(function($){
+				// Create events with empty functions attached for demo
+				$('li:even').click(function(){});
+				$('li:odd').focus(function(){});
+				$('li:eq(2)').bind('myevent', function(){});
+				$('li:eq(3)').bind('myevent.namespace1', function(){});
+				$('li:eq(4)').bind('myevent.namespace1', function(){});
+				$('li:eq(5)').bind('myevent.namespace2', function(){});
+				$('li:eq(8)').bind('myevent2', function(){});
+
+				// List of events used
+				var events = "click focus mouseover blur myevent myevent.namespace1 myevent.namespace2 myevent2".split(' ');
+
+				// Search events with filter and add to the html
+				for (var i in events){
+					var eventName = events[i];
+					$('li:Event('+eventName+')').each(function(){
+						var html = $(this).html();
+						html += html && html != '' ? ', ' + eventName : eventName;
+						$(this).html(html);
+					});
+				}
+
+				// Namespace only event check
+				$('li:Event(.namespace1)').each(function(){
+					var html = $(this).html();
+					html += html && html != '' ? ', .namespace1' : '.namespace1';
+					$(this).html(html);
+				});
+
+				// Elements that don't contain the 'myevent' event
+				$('li:Event(!myevent)').each(function(){
+					var html = $(this).html();
+					html += html && html != '' ? 
+						", <i style='font-size: 7pt;'>(Doesn't Contain 'myevent')</i>" : 
+						"<i style='font-size: 7pt;'>(Doesn't Contain 'myevent')</i>";
+					$(this).html(html);
+				});
+			});
+		</script>
+		<style type='text/css'>
+			body {
+				font-size: 10pt;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<!--
+		jQuery Event Filter
+		December 7, 2009
+		Corey Hart @ http://www.codenothing.com
+		-->
+
+
+		<h1>jQuery Event Filter</h1>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>
